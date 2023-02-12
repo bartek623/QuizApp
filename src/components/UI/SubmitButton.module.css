@@ -18,3 +18,8 @@
   cursor: pointer;
   background-color: #0cc360;
 }
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}

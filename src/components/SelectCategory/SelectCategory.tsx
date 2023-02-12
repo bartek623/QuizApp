@@ -8,6 +8,7 @@ import Tile from "../Tile/Tile";
 
 import styles from "./SelectCategory.module.css";
 import SubmitButton from "../UI/SubmitButton";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 function SelectCategory(props: any) {
   const [categories, setCategories] = useState<any[]>([]);
@@ -98,11 +99,13 @@ function SelectCategory(props: any) {
                 <SubmitButton
                   onClickHandler={startHandler}
                   text={"Start quiz!"}
+                  isAvalaible={!error}
                 />
               </Grid>
             </section>
           </div>
         )}
+        {error && <ErrorMessage error={error} />}
       </Card>
     </Container>
   );

@@ -8,6 +8,7 @@ import SubmitButton from "../UI/SubmitButton";
 
 import styles from "./Question.module.css";
 import Tile from "../Tile/Tile";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 interface Question {
   category: string;
@@ -28,6 +29,7 @@ function Question(props: any) {
   const [points, setPoints] = useState(0);
   const { isLoading, error, getData } = useFetch();
   const [selectedAnswer, setSelectedAnswer] = useState<string>("");
+  const [isAvalaible, setIsAvalaible] = useState(true);
 
   const currentQuestion = questions?.at(0);
   const answers = [
@@ -46,7 +48,7 @@ function Question(props: any) {
 
   useEffect(() => {
     getQuestions();
-  }, []);
+  }, [getQuestions]);
 
   const toggleAnswerHandler = function (answer: string) {
     setSelectedAnswer(answer);
@@ -63,13 +65,16 @@ function Question(props: any) {
   ));
 
   const nextQuestionHandler = function () {
+    setIsAvalaible(false);
     setTotalQuestions((prev) => ++prev);
 
     if (selectedAnswer === currentQuestion?.correctAnswer)
       setPoints((prev) => ++prev);
 
     setTimeout(() => {
+      setIsAvalaible(true);
       setQuestions((prev) => prev?.slice(1));
+      console.log(questions?.length);
       if ((questions?.length || 0) < 2) getQuestions();
     }, 800);
   };
@@ -107,6 +112,7 @@ function Question(props: any) {
                 <SubmitButton
                   onClickHandler={nextQuestionHandler}
                   text={"Next"}
+                  isAvalaible={isAvalaible && !error}
                 />
               </Grid>
             </section>
@@ -116,6 +122,7 @@ function Question(props: any) {
             >{`${points} / ${totalQuestions}`}</span>
           </>
         )}
+        {error && <ErrorMessage error={error} />}
       </Card>
     </Container>
   );

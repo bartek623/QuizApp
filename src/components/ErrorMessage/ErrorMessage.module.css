@@ -1,0 +1,28 @@
+.error-box {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: -1;
+
+  translate: -50% -100%;
+
+  width: 76rem;
+  max-width: 90%;
+  background-color: #b81d1d;
+  text-align: center;
+  font-size: 2.6rem;
+  padding: 0.6rem 0;
+  letter-spacing: 1px;
+  color: #ffbebe;
+
+  animation: slide-in 1.5s;
+}
+
+@keyframes slide-in {
+  from {
+    translate: -50% 0;
+  }
+  to {
+    translate: -50% -100%;
+  }
+}

@@ -9,14 +9,14 @@ function useFetch() {
     applyDataFn: Function
   ) {
     setIsLoading(true);
+    setError("");
     try {
       const res = await fetch(url);
 
-      if (!res.ok) throw new Error("Something went wrong");
+      if (!res.ok) throw new Error("Something went wrong, couldn't fetch data");
 
       const data = await res.json();
 
-      // console.log(data);
       applyDataFn(data);
     } catch (err: any) {
       setError(err.message);

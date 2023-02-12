@@ -17,6 +17,9 @@ function App() {
         <SelectCategory setQueryValuesHandler={setQueryValuesHandler} />
       )}
       {isStarted && <Question query={queryValues} />}
+      <a className="api-link" href={"https://the-trivia-api.com/"}>
+        API used in this app: https://the-trivia-api.com/
+      </a>
     </>
   );
 }
