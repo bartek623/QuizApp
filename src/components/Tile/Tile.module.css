@@ -1,11 +1,15 @@
 .tile {
+  position: relative;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+
   font-size: 1.6rem;
   font-family: inherit;
+  user-select: none;
 
   padding: 1.2rem;
+  height: 100%;
   border: 1px solid transparent;
   border-radius: 0.8rem;
   box-shadow: 0 0 4px 2px rgba(12, 57, 99, 0.05);
@@ -13,12 +17,20 @@
   transition: all 0.2s;
 }
 
-.tile:hover {
-  cursor: pointer;
-  scale: 1.02;
+.box {
+  position: absolute;
+  opacity: 0;
 }
 
-.active {
+.tile:hover,
+.tile:has(input:focus) {
+  cursor: pointer;
+  scale: 1.05;
+  box-shadow: 0 0 4px 2px rgba(12, 57, 99, 0.1);
+  background-color: #f3f3f3;
+}
+
+.tile:has(input:checked) {
   border: 1px solid #3689d6;
 }
 

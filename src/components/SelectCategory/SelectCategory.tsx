@@ -4,14 +4,16 @@ import Card from "../UI/Card";
 import Container from "../UI/Container";
 import Grid from "../UI/Grid";
 import Loading from "../UI/Loading";
-import CategoryTile from "./CategoryTile";
+import Tile from "../Tile/Tile";
 
 import styles from "./SelectCategory.module.css";
+import SubmitButton from "../UI/SubmitButton";
 
-function SelectCategory() {
+function SelectCategory(props: any) {
   const [categories, setCategories] = useState<any[]>([]);
   const [difficulties, setDifficulties] = useState<any[]>([]);
-  const [selected, setSelected] = useState<string[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string[]>([]);
+  const [selectedDifficulty, setSelectedDifficulty] = useState<string>("");
   const { isLoading, error, getData } = useFetch();
 
   useEffect(() => {
@@ -26,28 +28,54 @@ function SelectCategory() {
   }, [getData]);
 
   const toggleCategoryHandler = function (category: string) {
-    setSelected((prev: string[]) =>
-      prev.includes(category)
-        ? prev.filter((el: string) => el !== category)
-        : [...prev, category]
-    );
+    setSelectedCategory((prev) => {
+      if (prev.includes(category)) return prev.filter((el) => el !== category);
+      else return [...prev, category];
+    });
+  };
+
+  const toggleDifficultyHandler = function (diff: string) {
+    setSelectedDifficulty(diff);
   };
 
   const categoryElements = categories.map((category) => (
-    <CategoryTile
+    <Tile
+      element={"checkbox"}
       toggleHandler={toggleCategoryHandler}
       key={category[0]}
-      category={category}
+      item={category}
+      name={category[0]}
     />
   ));
 
   const difficultyElements = difficulties.map((category) => (
-    <CategoryTile
-      toggleHandler={toggleCategoryHandler}
+    <Tile
+      element={"radio"}
+      toggleHandler={toggleDifficultyHandler}
       key={category[0]}
-      category={category}
+      item={category}
+      name={"difficulty"}
     />
   ));
+
+  const startHandler = function () {
+    let categoriesQuery = "";
+    let difficultyQuery = "";
+
+    if (selectedCategory.length > 0)
+      categoriesQuery =
+        "&categories=" +
+        selectedCategory
+          .join(",")
+          .toLowerCase()
+          .replaceAll(" ", "_")
+          .replaceAll("&", "and");
+
+    if (selectedDifficulty)
+      difficultyQuery = "&difficulty=" + selectedDifficulty;
+
+    props.setQueryValuesHandler(categoriesQuery + difficultyQuery);
+  };
 
   return (
     <Container>
@@ -56,13 +84,22 @@ function SelectCategory() {
         {!isLoading && (
           <div className={styles.container}>
             <section>
-              <h4 className={styles["category-heading"]}>Categories</h4>
-              <Grid>{categoryElements}</Grid>
+              <legend className={styles["category-label"]}>Categories</legend>
+              <Grid fieldset={true}>{categoryElements}</Grid>
             </section>
 
             <section>
-              <h4 className={styles["category-heading"]}>Difficulty</h4>
-              <Grid>{difficultyElements}</Grid>
+              <legend className={styles["category-label"]}>Difficulty</legend>
+              <Grid fieldset={true}>{difficultyElements}</Grid>
+            </section>
+
+            <section className={styles.action}>
+              <Grid>
+                <SubmitButton
+                  onClickHandler={startHandler}
+                  text={"Start quiz!"}
+                />
+              </Grid>
             </section>
           </div>
         )}
