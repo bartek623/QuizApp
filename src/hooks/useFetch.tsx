@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 function useFetch() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const getData = async function (url: string, applyDataFn: Function) {
+  const getData = useCallback(async function (
+    url: string,
+    applyDataFn: Function
+  ) {
+    setIsLoading(true);
     try {
       const res = await fetch(url);
 
@@ -18,7 +22,9 @@ function useFetch() {
       setError(err.message);
       console.error(err);
     }
-  };
+    setIsLoading(false);
+  },
+  []);
 
   return { isLoading, error, getData };
 }
