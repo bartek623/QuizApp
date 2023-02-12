@@ -1,0 +1,33 @@
+.tile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.6rem;
+
+  padding: 1.2rem;
+  border: 1px solid transparent;
+  border-radius: 0.8rem;
+  box-shadow: 0 0 4px 2px rgba(12, 57, 99, 0.1);
+
+  transition: all 0.2s;
+}
+
+.tile:hover {
+  cursor: pointer;
+  border: 1px solid #2873b9;
+  box-shadow: 0 0 4px 2px rgba(12, 57, 99, 0.2);
+}
+
+.active {
+  border: 1px solid #2873b9;
+}
+
+.name {
+  color: #2873b9;
+  font-weight: 500;
+}
+
+.quantity {
+  color: #5ba3e6;
+  font-weight: 600;
+}

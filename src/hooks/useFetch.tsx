@@ -12,7 +12,8 @@ function useFetch() {
 
       const data = await res.json();
 
-      console.log(data);
+      // console.log(data);
+      applyDataFn(data);
     } catch (err: any) {
       setError(err.message);
       console.error(err);
