@@ -1,5 +1,7 @@
+import SelectCategory from "./components/SelectCategory/SelectCategory";
+
 function App() {
-  return <div></div>;
+  return <SelectCategory />;
 }
 
 export default App;
