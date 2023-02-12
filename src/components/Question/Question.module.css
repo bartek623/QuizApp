@@ -1,0 +1,55 @@
+.difficulty-el {
+  position: absolute;
+  top: 0;
+  right: 2rem;
+  translate: 0 -50%;
+
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 4px 8px;
+}
+
+.hard {
+  background-color: #a03014;
+  color: #f7a793;
+}
+
+.medium {
+  background-color: #d1be0f;
+  color: #fff598;
+}
+
+.easy {
+  background-color: #67be15;
+  color: #d0ffa4;
+}
+
+.category-el {
+  display: block;
+  font-size: 3.2rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: rgba(33, 68, 182, 0.3);
+  margin-bottom: 1.2rem;
+}
+
+.question-el {
+  font-size: 2.4rem;
+  color: #222;
+  margin-bottom: 3.2rem;
+}
+
+.answers {
+  margin-bottom: 2.4rem;
+}
+
+.points {
+  display: block;
+  text-align: center;
+
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: rgb(98, 134, 255);
+}

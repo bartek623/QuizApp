@@ -1,0 +1,25 @@
+.btn {
+  font-size: 2.2rem;
+  font-weight: 700;
+  font-family: inherit;
+  letter-spacing: 4px;
+  color: #c0ffe0;
+
+  padding: 1rem;
+  border-radius: 0.8rem;
+  border: none;
+  background-color: #0dd471;
+
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  letter-spacing: 6px;
+  cursor: pointer;
+  background-color: #0cc360;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
