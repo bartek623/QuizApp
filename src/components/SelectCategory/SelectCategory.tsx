@@ -42,6 +42,7 @@ function SelectCategory(props: any) {
   const categoryElements = categories.map((category) => (
     <Tile
       element={"checkbox"}
+      type={"category"}
       toggleHandler={toggleCategoryHandler}
       key={category[0]}
       item={category}
@@ -52,6 +53,7 @@ function SelectCategory(props: any) {
   const difficultyElements = difficulties.map((category) => (
     <Tile
       element={"radio"}
+      type={"category"}
       toggleHandler={toggleDifficultyHandler}
       key={category[0]}
       item={category}

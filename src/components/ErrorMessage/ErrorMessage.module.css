@@ -10,12 +10,12 @@
   max-width: 90%;
   background-color: #b81d1d;
   text-align: center;
-  font-size: 2.6rem;
+  font-size: 2rem;
   padding: 0.6rem 0;
   letter-spacing: 1px;
-  color: #ffbebe;
+  color: #ffd6d6;
 
-  animation: slide-in 1.5s;
+  animation: slide-in 1.5s ease-out;
 }
 
 @keyframes slide-in {

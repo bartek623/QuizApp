@@ -5,4 +5,12 @@
   border-radius: 2.4rem;
   width: 120rem;
   max-width: 96%;
+  margin: 2rem 0;
+}
+
+@media (max-width: 38em) {
+  .card {
+    padding: 1rem 1.6rem;
+    max-width: 100%;
+  }
 }
