@@ -9,6 +9,7 @@ import SubmitButton from "../UI/SubmitButton";
 import styles from "./Question.module.css";
 import Tile from "../Tile/Tile";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import Timer from "../Timer/Timer";
 
 interface Question {
   category: string;
@@ -22,6 +23,8 @@ interface Question {
   regions: string[];
   isNiche: boolean;
 }
+
+const TIME_TO_NEXT = 1000;
 
 function Question(props: any) {
   const [questions, setQuestions] = useState<Question[]>();
@@ -41,7 +44,9 @@ function Question(props: any) {
     function () {
       const url =
         "https://the-trivia-api.com/api/questions?limit=5" + props.query;
-      getData(url, setQuestions);
+      getData(url, (data: Question[]) => {
+        setQuestions(data);
+      });
     },
     [getData]
   );
@@ -57,10 +62,13 @@ function Question(props: any) {
   const answerElements = answers.map((answer) => (
     <Tile
       element={"radio"}
+      type={"answer"}
       toggleHandler={toggleAnswerHandler}
       key={answer || 0 + Math.random()}
       item={answer}
       name={"answer"}
+      showCorrect={!isAvalaible}
+      correct={currentQuestion?.correctAnswer}
     />
   ));
 
@@ -74,9 +82,9 @@ function Question(props: any) {
     setTimeout(() => {
       setIsAvalaible(true);
       setQuestions((prev) => prev?.slice(1));
-      console.log(questions?.length);
+
       if ((questions?.length || 0) < 2) getQuestions();
-    }, 800);
+    }, TIME_TO_NEXT);
   };
 
   return (
@@ -123,6 +131,9 @@ function Question(props: any) {
           </>
         )}
         {error && <ErrorMessage error={error} />}
+        {!!currentQuestion && !isLoading && isAvalaible && (
+          <Timer skipHandler={nextQuestionHandler} />
+        )}
       </Card>
     </Container>
   );

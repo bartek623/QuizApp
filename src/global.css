@@ -12,7 +12,7 @@ html {
 body {
   background: linear-gradient(210deg, #85a1ff, #4465d1);
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 #root {
@@ -22,13 +22,15 @@ body {
 
 .api-link,
 .api-link:visited {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+
   color: #ddd;
   font-size: 1.2rem;
   letter-spacing: 1.5px;
   text-decoration: none;
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
+
   transition: all 0.2s;
 }
 
@@ -36,4 +38,25 @@ body {
 .api-link:active {
   color: #fff;
   scale: 1.03;
+}
+
+@media (max-width: 38em) {
+  html {
+    font-size: 50%;
+  }
+
+  .api-link,
+  .api-link:visited {
+    position: static;
+    text-align: center;
+    display: block;
+
+    color: #ddd;
+    font-size: 1.2rem;
+    letter-spacing: 0;
+    text-decoration: none;
+    margin-bottom: 4px;
+
+    transition: all 0.2s;
+  }
 }
