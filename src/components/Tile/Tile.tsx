@@ -1,6 +1,9 @@
+import { useState } from "react";
 import styles from "./Tile.module.css";
 
 function Tile(props: any) {
+  const [isChecked, setIsChecked] = useState(false);
+
   let item: string;
   if (!props.item || props.item[0] === "null") return <></>;
 
@@ -9,7 +12,8 @@ function Tile(props: any) {
   // category (select category view)
   else item = props.item[0];
 
-  const toggleActiveHandler = function () {
+  const toggleActiveHandler = function (e: any) {
+    setIsChecked(e.target.checked);
     props.toggleHandler(item);
   };
 

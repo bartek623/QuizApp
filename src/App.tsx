@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Question from "./components/Question/Question";
+import Question from "./components/Question/Questions";
 import SelectCategory from "./components/SelectCategory/SelectCategory";
 
 function App() {

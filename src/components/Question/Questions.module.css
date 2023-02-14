@@ -1,0 +1,8 @@
+.points {
+  display: block;
+  text-align: center;
+
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: rgb(98, 134, 255);
+}

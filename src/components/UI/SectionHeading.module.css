@@ -1,0 +1,8 @@
+.heading {
+  display: block;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: rgba(33, 68, 182, 0.5);
+  margin-bottom: 1.2rem;
+}

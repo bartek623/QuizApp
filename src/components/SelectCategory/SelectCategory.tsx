@@ -5,10 +5,11 @@ import Container from "../UI/Container";
 import Grid from "../UI/Grid";
 import Loading from "../UI/Loading";
 import Tile from "../Tile/Tile";
-
-import styles from "./SelectCategory.module.css";
 import SubmitButton from "../UI/SubmitButton";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
+
+import styles from "./SelectCategory.module.css";
+import SectionHeading from "../UI/SectionHeading";
 
 function SelectCategory(props: any) {
   const [categories, setCategories] = useState<any[]>([]);
@@ -87,12 +88,12 @@ function SelectCategory(props: any) {
         {!isLoading && (
           <div className={styles.container}>
             <section>
-              <legend className={styles["category-label"]}>Categories</legend>
+              <SectionHeading content={"Categories"} />
               <Grid fieldset={true}>{categoryElements}</Grid>
             </section>
 
             <section>
-              <legend className={styles["category-label"]}>Difficulty</legend>
+              <SectionHeading content={"Difficulty"} />
               <Grid fieldset={true}>{difficultyElements}</Grid>
             </section>
 
