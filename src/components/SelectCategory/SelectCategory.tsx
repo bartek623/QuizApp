@@ -10,6 +10,7 @@ import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 import styles from "./SelectCategory.module.css";
 import SectionHeading from "../UI/SectionHeading";
+import UserProfile from "../UserProfile/UserProfile";
 
 function SelectCategory(props: any) {
   const [categories, setCategories] = useState<any[]>([]);
@@ -86,27 +87,30 @@ function SelectCategory(props: any) {
       <Card>
         {isLoading && <Loading />}
         {!isLoading && (
-          <div className={styles.container}>
-            <section>
-              <SectionHeading content={"Categories"} />
-              <Grid fieldset={true}>{categoryElements}</Grid>
-            </section>
+          <>
+            <div className={styles.container}>
+              <section>
+                <SectionHeading content={"Categories"} />
+                <Grid fieldset={true}>{categoryElements}</Grid>
+              </section>
 
-            <section>
-              <SectionHeading content={"Difficulty"} />
-              <Grid fieldset={true}>{difficultyElements}</Grid>
-            </section>
+              <section>
+                <SectionHeading content={"Difficulty"} />
+                <Grid fieldset={true}>{difficultyElements}</Grid>
+              </section>
 
-            <section className={styles.action}>
-              <Grid>
-                <SubmitButton
-                  onClickHandler={startHandler}
-                  text={"Start quiz!"}
-                  isAvalaible={!error}
-                />
-              </Grid>
-            </section>
-          </div>
+              <section className={styles.action}>
+                <Grid>
+                  <SubmitButton
+                    onClickHandler={startHandler}
+                    text={"Start quiz!"}
+                    isAvalaible={!error}
+                  />
+                </Grid>
+              </section>
+            </div>
+            <UserProfile />
+          </>
         )}
         {error && <ErrorMessage error={error} />}
       </Card>

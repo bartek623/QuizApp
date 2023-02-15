@@ -1,0 +1,58 @@
+.profile-container {
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  top: calc(100% - 2.4rem);
+
+  display: flex;
+  justify-content: space-between;
+
+  background-color: #008cff;
+  width: 100%;
+  padding: 3.2rem 2.8rem 1.2rem;
+  border: 1px solid #eee;
+  border-bottom-left-radius: 2.4rem;
+  border-bottom-right-radius: 2.4rem;
+
+  color: #eee;
+  font-size: 2rem;
+
+  animation: slide-in 1s;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.username-box {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.username {
+  word-break: break-all;
+}
+
+.edit-btn {
+  border: none;
+  background: none;
+  color: inherit;
+  font-size: 2rem;
+
+  transition: all 0.2s;
+}
+
+.edit-btn:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.points {
+  font-weight: 600;
+}

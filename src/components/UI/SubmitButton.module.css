@@ -4,6 +4,7 @@
   font-family: inherit;
   letter-spacing: 4px;
   color: #c0ffe0;
+  user-select: none;
 
   padding: 1rem;
   border-radius: 0.8rem;
