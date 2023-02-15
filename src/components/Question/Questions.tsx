@@ -61,8 +61,17 @@ function Question(props: any) {
     setIsReady(false);
     setTotalQuestions((prev) => ++prev);
 
-    if (selectedAnswer === currentQuestion?.correctAnswer)
+    if (selectedAnswer === currentQuestion?.correctAnswer) {
       setPoints((prev) => ++prev);
+
+      let points = +(localStorage.getItem("points") || 0);
+
+      if (currentQuestion.difficulty === "hard") points += 5;
+      if (currentQuestion.difficulty === "medium") points += 3;
+      else points++;
+
+      localStorage.setItem("points", String(points));
+    }
 
     setTimeout(() => {
       setIsReady(true);
